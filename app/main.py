@@ -9,6 +9,9 @@ import torchvision.transforms as transforms
 from torchvision.models import mobilenet_v2
 from PIL import Image
 import re
+import os
+import uvicorn
+
 
 app = FastAPI()
 
@@ -118,3 +121,7 @@ async def predict(file: UploadFile = File(...)):
             {"label": lbl, "score": round(score, 3)} for lbl, score in top3
         ]
     }
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=False)
