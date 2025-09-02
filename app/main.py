@@ -16,7 +16,7 @@ import uvicorn
 app = FastAPI()
 
 # Set up Tesseract path if needed (adjust if not in PATH)
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = "tesseract"
 
 # Make REF_DIR robust regardless of working directory:
 REF_DIR = os.path.join(os.path.dirname(__file__), "models", "reference_flags")
